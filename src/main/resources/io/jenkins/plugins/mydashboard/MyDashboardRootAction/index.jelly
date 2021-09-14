@@ -1,0 +1,35 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:x="jelly:xml"
+>
+   <x:doctype name="html"/>
+    <html lang="${it.lang}">
+		<j:new var="h" className="hudson.Functions"/><!-- instead of JSP functions -->
+    <j:invokeStatic var="j" className="jenkins.model.Jenkins" method="getActiveInstance"/>
+     ${h.initPageVariables(context)}
+     <st:contentType value="text/html;charset=UTF-8"/>
+<head>
+<style>
+html, body {
+    height: 100%;
+    margin: 0;         /* Reset default margin on the body element */
+}
+iframe {
+    display: block;       /* iframes are inline by default */
+    border: none;         /* Reset default border */
+    width: 100%;
+    height: 100%;
+}
+</style>
+<title> My DashBoard</title>
+</head>
+<body>
+  <iframe
+    id="mydashboard-template-container"
+    style="overflow:hidden;height:100%;width:100%" 
+    height="100%" 
+    width="100%"
+    src="${resURL}/plugin/mydashboard/page/index.html"
+    />
+</body>
+</html>
+</j:jelly>
